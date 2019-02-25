@@ -29,6 +29,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="runserver.py" />
+    <Compile Include="WebData_Tool\bckend01.py" />
+    <Compile Include="WebData_Tool\dmp_tc.py" />
     <Compile Include="WebData_Tool\__init__.py" />
     <Compile Include="WebData_Tool\views.py" />
   </ItemGroup>
@@ -36,8 +38,13 @@
     <Folder Include="WebData_Tool\" />
     <Folder Include="WebData_Tool\static\" />
     <Folder Include="WebData_Tool\static\content\" />
+    <Folder Include="WebData_Tool\static\downloads\" />
+    <Folder Include="WebData_Tool\static\downloads\tc\" />
     <Folder Include="WebData_Tool\static\fonts\" />
+    <Folder Include="WebData_Tool\static\img\" />
     <Folder Include="WebData_Tool\static\scripts\" />
+    <Folder Include="WebData_Tool\static\uploads\" />
+    <Folder Include="WebData_Tool\static\uploads\tc\" />
     <Folder Include="WebData_Tool\templates\" />
   </ItemGroup>
   <ItemGroup>
@@ -49,8 +56,13 @@
     <Content Include="WebData_Tool\static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="WebData_Tool\static\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="WebData_Tool\static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="WebData_Tool\static\img\excelstart.png" />
+    <Content Include="WebData_Tool\static\img\excelstart_b.png" />
+    <Content Include="WebData_Tool\static\img\mprofile white.png" />
+    <Content Include="WebData_Tool\static\img\_ionicons_svg_md-bookmark.svg" />
     <Content Include="WebData_Tool\static\scripts\bootstrap.js" />
     <Content Include="WebData_Tool\static\scripts\bootstrap.min.js" />
+    <Content Include="WebData_Tool\static\scripts\initial01.js" />
     <Content Include="WebData_Tool\static\scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="WebData_Tool\static\scripts\jquery-1.10.2.js" />
     <Content Include="WebData_Tool\static\scripts\jquery-1.10.2.min.js" />
@@ -64,8 +76,6 @@
     <Content Include="WebData_Tool\static\scripts\respond.js" />
     <Content Include="WebData_Tool\static\scripts\respond.min.js" />
     <Content Include="WebData_Tool\static\scripts\_references.js" />
-    <Content Include="WebData_Tool\templates\about.html" />
-    <Content Include="WebData_Tool\templates\contact.html" />
     <Content Include="WebData_Tool\templates\index.html" />
     <Content Include="WebData_Tool\templates\layout.html" />
   </ItemGroup>

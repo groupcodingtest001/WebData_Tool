@@ -1,33 +1,204 @@
 {% extends "layout.html" %}
 
 {% block content %}
+<style type="text/css">
 
-<div class="jumbotron">
-    <h1>Flask</h1>
-    <p class="lead">Flask is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://flask.pocoo.org/" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
+    .ui-jqgrid tr.ui-row-ltr td {
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+    }
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            Flask gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://flask.pocoo.org/docs/">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>The Python Package Index is a repository of software for the Python programming language.</p>
-        <p><a class="btn btn-default" href="https://pypi.python.org/pypi">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Microsoft Azure</h2>
-        <p>You can easily publish to Microsoft Azure using Visual Studio. Find out how you can host your application using a free trial today.</p>
-        <p><a class="btn btn-default" href="http://azure.microsoft.com">Learn more &raquo;</a></p>
+    th.ui-th-column {
+        border-right-color: transparent !important;
+        vertical-align: middle;
+    }
+
+    .ui-jqgrid tr.jqgrow td {
+        font-size: 13px;
+        height: 40px;
+        text-align: center;
+        color: gray;
+        vertical-align: middle;
+    }
+
+    .ui-jqgrid .ui-jqgrid-labels th.ui-th-column .ui-jqgrid-sortable {
+        font-size: 15px;
+        height: 30px;
+        color: dimgrey;
+        vertical-align: middle;
+        font-weight: normal;
+    }
+
+    .ui-jqgrid .ui-jqgrid-pager {
+        border-color: transparent;
+    }
+
+    .ui-jqgrid-titlebar .ui-jqgrid-caption {
+        border-color: transparent;
+    }
+
+    .ui-jqgrid {
+        border-bottom-color: transparent;
+    }
+
+
+    .ui-jqgrid-hdiv {
+        border-bottom-color: gainsboro;
+        border-bottom-width: 1px;
+        border-bottom-style: dotted;
+        vertical-align: middle;
+    }
+
+
+    .ui-jqgrid-bdiv {
+        border-color: transparent;
+    }
+
+    .pagination {
+        margin: 0;
+    }
+
+
+        .pagination > li > a,
+        .pagination > li > span {
+            border: 1px solid lightgrey;
+            color: grey;
+            margin: 0 5px;
+        }
+
+        .pagination > li.active > a {
+            background: lightgrey;
+            color: ghostwhite;
+            border: 1px solid lightgrey;
+        }
+
+
+
+        .pagination > li:first-child > a,
+        .pagination > li:first-child > span,
+        .pagination > li:last-child > a,
+        .pagination > li:last-child > span {
+            margin-left: 0px;
+            padding-left: 10px;
+            padding-right: 10px;
+            border-radius: 0px;
+        }
+
+    .modal_files {
+        text-align: center;
+        line-height: 100px;
+        height: 150px;
+        background-color: ghostwhite;
+        color: lightgray;
+        border: 1px dotted;
+        border-radius: 5px 5px 5px 5px;
+        border-color: lightgray;
+    }
+
+    .table > tbody {
+        font-size: 14px;
+        color: darkgray;
+    }
+
+    .table > thead {
+        font-size: 14px;
+        color: darkgray;
+        background-color: ghostwhite;
+        border: 1px dotted;
+        border-color: lightgray;
+    }
+
+    .table > tbody > tr > td {
+        font-size: 14px;
+        color: darkgray;
+        border: 1px dotted;
+        border-color: lightgray;
+    }
+
+    .table > thead > tr > th {
+        font-size: 14px;
+        color: darkgray;
+        border: 1px dotted;
+        border-color: lightgray;
+    }
+</style>
+<div style="display:table;width:100%;">
+    <div align="center" style="height:560px;display: table-cell; vertical-align: middle;">
+        <div id="starttaskid01" style="margin:auto;" onmouseover="mouseOver()" onmouseout="mouseOut()">
+            <a href="#" name="starttask01"><img id="imgdspid01" src="/static/img/excelstart.png" width="150" /></a>
+            <br>
+            <br>
+            <p id="paraid01" style="text-align:center;color:grey;font-size:25px;">Click and Start Data Export Task</p>
+        </div>
     </div>
 </div>
+<div class="modal fade" id="start1">
+    <div id='question_answer' class="modal-dialog" role="document" style="width: 800px;">
+        <div class="modal-content">
+            <div class="modal-header" align='center'>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">x</span>
+                </button>
+                <h4 class="modal-title" id="modalLabel" name="">Loading From Web Pages</h4>
+            </div>
+            <div id="_modalDialog_body" class="modal-body" style="overflow-y:auto;">
+                <div id="selectFiles" style="height:300px;">
+                    <div class="row" style="height:auto;overflow:hidden;">
+                        <div class="col-md-3" style="text-align:center;">
+                            <a href='#'><img src='/static/img/_ionicons_svg_md-bookmark.svg' width='25' /></a>
+                            <span style="font-size:18px;">Tencent DMP</span>
+                        </div>
+                        <div class="col-md-9" style="margin-top:35px;" >
+                            <div id="filedisplay02" style="margin-right:40px;"></div>
+                            <br>
+                            <div id="filedbtn02"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class='modal-footer'>
+                <div id="footer01" class='form-group' align='center'></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="start1sts">
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>x</button>
+                <h4 class='modal-title' id='myModalLabel'><b>New Data Task</b></h4>
+            </div>
+            <div class='modal-body'>Data task in progress.Please wait a minute before downloading!</div>
+            <div class='modal-footer'>
+                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="progrs1sts">
+    <div class='modal-dialog'>
+        <div class='modal-content'>
+            <div class='modal-header'>
+                <button type='button' class='close' data-dismiss='modal' aria-hidden='true'>x</button>
+                <h4 class='modal-title' id='myModalLabel'><b>Data Task In Progress</b></h4>
+            </div>
+            <div class='modal-body'>Please wait a minute before download complete !</div>
+            <div class='modal-footer'>
+                <button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/static/scripts/jquery-1.10.2.js"></script>
+<script src="/static/scripts/bootstrap.js"></script>
+<script src="/static/scripts/respond.js"></script>
+<script src="/static/scripts/grid.locale-en.js"></script>
+<script src="/static/scripts/jquery.jqGrid.min.js"></script>
+<script src="/static/scripts/bootstrap-select.js"></script>
+<script src="/static/scripts/bootstrap-datetimepicker.js"></script>
+<script src="/static/scripts/initial01.js"></script>
+
+
 
 {% endblock %}
